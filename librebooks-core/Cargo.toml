@@ -1,0 +1,7 @@
+[package]
+name = "librebooks-core"
+version = "0.1.0"
+authors = ["Vlad Verestiuc <verestiuc.vlad@gmail.com>"]
+
+[dependencies]
+# ffmpeg = "0.1.1"
