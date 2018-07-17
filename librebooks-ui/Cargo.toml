@@ -9,5 +9,6 @@ gtk = {version = "0.4.1", features=["v3_22"]}
 gio = "0.4.1"
 glib = "0.5.0"
 lazy_static = "1.0.1"
-
+chrono = "0.4.4"
+relm = ""
 librebooks-core = { path = "../librebooks-core" }

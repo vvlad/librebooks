@@ -1,41 +1,34 @@
 #![feature(extern_prelude)]
+#![feature(macro_rules)]
+
 #[macro_use]
 extern crate error_chain;
+extern crate chrono;
 extern crate gio;
 extern crate glib;
 extern crate gtk;
-#[macro_use]
-extern crate lazy_static;
-extern crate librebooks_core;
+
+extern crate librebooks_core as core;
 
 use gio::prelude::*;
-use gtk::prelude::*;
-use std::sync::Mutex;
+
+mod macros;
 
 mod app;
 mod errors;
-use errors::NoResult;
+
+use errors::Result;
 mod resources;
 
 quick_main!(run);
 
-fn run() -> NoResult {
+fn run() -> Result<()> {
     resources::init()?;
+    gtk::init()?;
+    core::init()?;
 
-    let gtk_application = gtk::Application::new(
-        Some("com.verestiuc.librebooks"),
-        gio::ApplicationFlags::empty(),
-    )?;
+    app::launch()?;
 
-    let app = Mutex::new(app::App::new());
-
-    gtk_application.connect_startup(move |application| {
-        app.lock().unwrap().activate(application);
-    });
-
-    gtk_application.connect_activate(move |_| {});
-
-    gtk_application.run(&[]);
-
+    gtk::main();
     Ok(())
 }
