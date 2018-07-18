@@ -7,6 +7,7 @@ error_chain!{
         GLibError(glib::error::BoolError);
         GioError(gio::Error);
         CoreError(core::Error);
+
     }
 }
 

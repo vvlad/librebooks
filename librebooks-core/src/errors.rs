@@ -12,6 +12,6 @@ error_chain!{
         JsonError(serde_json::Error);
         IOError(io::Error);
         GTSError(gst::Error);
-        PlayerError(mpsc::SendError<player::backend::Command>);
+        //PlayerError(mpsc::SendError<player::backend::Command>);
     }
 }

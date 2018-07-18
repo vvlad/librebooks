@@ -44,6 +44,9 @@ pub struct MainWindow {
     pub played: gtk::Label,
     pub remaining: gtk::Label,
     pub open: gtk::Button,
+    pub title: gtk::Label,
+    pub progress: gtk::ProgressBar,
+    pub chapter: gtk::Button,
 }
 
 impl MainWindow {
@@ -67,10 +70,9 @@ impl MainWindow {
             open: resources.get("open"),
             played: resources.get("played"),
             remaining: resources.get("remaining"),
+            title: resources.get("title"),
+            progress: resources.get("progress"),
+            chapter: resources.get("chapter"),
         }
-    }
-
-    pub fn show(&self) {
-        self.view.show_all();
     }
 }

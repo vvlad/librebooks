@@ -1,5 +1,5 @@
 #![feature(extern_prelude)]
-#![feature(macro_rules)]
+#![feature(proc_macro)]
 
 #[macro_use]
 extern crate error_chain;
@@ -7,10 +7,13 @@ extern crate chrono;
 extern crate gio;
 extern crate glib;
 extern crate gtk;
+#[macro_use]
+extern crate relm;
+extern crate relm_attributes;
+#[macro_use]
+extern crate relm_derive;
 
 extern crate librebooks_core as core;
-
-use gio::prelude::*;
 
 mod macros;
 
@@ -27,8 +30,8 @@ fn run() -> Result<()> {
     gtk::init()?;
     core::init()?;
 
-    app::launch()?;
+    //app::launch()?;
 
-    gtk::main();
+    app::run()?;
     Ok(())
 }

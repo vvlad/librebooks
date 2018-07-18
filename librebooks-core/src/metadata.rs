@@ -81,6 +81,18 @@ impl Metadata {
     }
 }
 
+impl Default for Metadata {
+    fn default() -> Self {
+        Metadata {
+            path: path::PathBuf::new(),
+            chapters: vec![],
+            title: "None".to_string(),
+            artist: "".to_string(),
+            duration: time::Duration::from_secs(0),
+        }
+    }
+}
+
 pub fn millis_to_time(millis: String) -> time::Duration {
     time::Duration::from_millis((millis.parse::<f32>().unwrap() * 1000.0) as u64)
 }
